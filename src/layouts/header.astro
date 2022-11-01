@@ -1,0 +1,56 @@
+<div class="HeaderBar">
+    <div class="OptionButtons">
+        <slot name="Options" />
+    </div>
+</div>
+
+<head>
+	<link rel="stylesheet" href="/styles/global.css" />
+	<style is:global>
+		@font-face {
+			font-family: "PressStart2P";
+			src: url("PressStart2P-Regular.ttf");
+			font-weight: normal;
+			font-style: normal;
+			font-display: swap;
+		}
+		body {
+			background: var(--main-bg-gradient);
+			display: flex;
+			flex-direction: column;
+			margin: 0;
+			height: 100vh;
+			padding: 0;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			overflow: hidden;
+		}
+		* {
+			font-size: 1vw;
+			font-family: PressStart2P;
+		}
+    </style>
+</head>
+
+<style>
+    .HeaderBar {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        border-bottom-style: solid;
+        border-bottom-width: 4px;
+        border-bottom-color: var(--border-color);
+        background: var(--header-gradient);
+    }
+    .LogoAndName {
+        margin-left: 20px;
+    }
+    .OptionButtons {
+        margin: 5px;
+        padding: 10px;
+        display: flex;
+        gap: 5px;
+        margin-left: auto;
+    }
+
+</style>

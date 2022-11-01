@@ -1,0 +1,76 @@
+---
+import Header from "../layouts/header.astro";
+import MenuButton from "../components/MenuButton.astro";
+import Instance from "../layouts/instance.astro";
+---
+
+<style is:global>
+	.InstancesList {
+		scroll-snap-type: y mandatory;
+		height: 100%;
+		width: 100%;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		overflow-y: auto;
+	}
+</style>
+
+<body>
+	<div class="Header">
+		<Header>
+			<div class="HeaderLogo" slot="Icon">MultiSnail</div>
+			<MenuButton
+				icon="plus"
+				Label="Create Instance"
+				slot="Options"
+				manager="addInstanceButton()"
+			/>
+			<MenuButton
+				icon="cog"
+				Label="Options"
+				slot="Options"
+				manager="globalOptionsMenu()"
+			/>
+		</Header>
+	</div>
+	<div class="InstancesList">
+		<Instance name="Instance Name" icon="/32x32.png" />
+	</div>
+	<script is:inline>
+		const { invoke } = window.__TAURI__.tauri;
+		function globalOptionsMenu() {
+			const webview = new window.__TAURI__.window.WebviewWindow(
+				"theUniqueLabel",
+				{
+					url: "/options",
+				}
+			);
+		}
+		function addInstanceButton() {
+			const webview = new window.__TAURI__.window.WebviewWindow(
+				"theUniqueLabel",
+				{
+					url: "/createInstance",
+				}
+			);
+			/*
+			newInstance = document
+				.querySelector(".InstancesList")
+				.appendChild(elm.cloneNode(true));
+			newInstance.setAttribute(
+				"data-id",
+				Math.floor(Math.random() * 100)
+			);*/
+		}
+		function instanceDeleteButton(button) {
+			instance = button.closest(".Instance");
+			invoke("helpme", { hello: instance.getAttribute("data-id") }).then(
+				(response) => alert(response)
+			);
+			instance.remove();
+		}
+		elm = document.body.getElementsByClassName("Instance")[0];
+		document.querySelector(".Instance").remove();
+	</script>
+</body>

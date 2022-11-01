@@ -1,0 +1,12 @@
+:root {
+    --main-bg-color: #544e68;
+    --main-bg-gradient: linear-gradient(-45deg, var(--border-color),var(--text-color));
+    --header-gradient: linear-gradient(90deg, var(--text-color), var(--border-color));
+    --icon-color: #ffaa5e;
+    --border-color: #0d2b45;
+    --text-color: #203c56;
+    --button-bg-color: #8d697a;
+    --c: #d08159;
+    --c: #ffd4a3;
+    --c: #ffecd6;
+}

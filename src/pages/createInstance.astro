@@ -1,0 +1,10 @@
+---
+import Header from "../layouts/header.astro";
+import MenuButton from "../components/MenuButton.astro";
+---
+
+<Header>
+    <div class="HeaderLogo" slot="Icon">MultiSnail</div>
+    <MenuButton Label="Save" icon="content-save" slot="Options" />
+    <MenuButton Label="Cancel" icon="close-thick" slot="Options" />
+</Header>

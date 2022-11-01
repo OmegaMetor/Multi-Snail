@@ -1,0 +1,40 @@
+---
+const { Label, icon, fill = false, manager="" } = Astro.props;
+import { Icon } from "astro-icon";
+---
+
+<button id="button" class={fill && "fill"} onclick={manager}>
+    <div>
+        <Icon pack="mdi" name={icon} size="20" />
+        <span>{Label}</span>
+    </div>
+</button>
+
+<style>
+    button {
+        height: 25px;
+        width: fit-content;
+        white-space: nowrap;
+        background-color: var(--button-bg-color);
+        border-radius: 10px;
+        border: 0px;
+    }
+    div {
+        display: inline-flex;
+        align-items: center;
+    }
+    span {
+        color: var(--text-color);
+        vertical-align: center;
+        padding-left: 10px;
+    }
+    [astro-icon] {
+        color: var(--icon-color);
+    }
+    button.fill {
+        display: flexbox;
+        place-items: center;
+        width: 100%;
+        align-content: center;
+    }
+</style>
