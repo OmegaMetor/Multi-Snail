@@ -5,6 +5,8 @@
 MultiSnail is an instance and mod manager for Will You Snail.
 It was originally intended to be a simple installer for the gmml mod loader, however it quickly grew to be intended to be a all-in-one installer and launcher for Will You Snail instances with their own mods, mod loaders, and save folders.
 
+[If you want to keep up with the current plans, you can check out the trello!](https://trello.com/b/4qJhUSY5/multi-snail)
+
 ## Installation
 
 Once MultiSnail is ready for a beta release, github actions will automatically publish releases every time there is a commit to the release branch. 
