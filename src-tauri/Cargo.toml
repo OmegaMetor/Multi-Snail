@@ -1,6 +1,6 @@
 [package]
 name = "multi-snail"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Tauri App"
 authors = ["you"]
 license = ""
@@ -17,11 +17,12 @@ tauri-build = { version = "1.1.1", features = [] }
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.1.1", features = ["api-all"] }
+tauri = { version = "1.2.1", features = ["api-all"] }
 subprocess = "0.2.9"
 reqwest = { version = "0.11.12", features = ["blocking"] }
 flate2 = "1.0.24"
 tar = "0.4.38"
+zip-extract = "0.1.1"
 
 [features]
 # by default Tauri runs in production mode

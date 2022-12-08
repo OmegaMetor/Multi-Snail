@@ -11,12 +11,13 @@ static STEAMCMD_DOWNLOADURL: &str =
 static STEAMCMD_EXENAME: &str = "steamcmd.exe";
 #[cfg(target_os = "windows")]
 static STEAMCMD_DOWNLOADURL: &str =
-    "https://steamcdn-a.akamaihd.net/client/installer/steamcmd.tar.gz";
+    "https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip";
 use flate2::read::GzDecoder;
 use reqwest::blocking::get;
 use std::env;
 use std::fs;
 use std::io::BufReader;
+use std::io::Cursor;
 use std::path::PathBuf;
 use subprocess::Exec;
 use tar::Archive;
@@ -42,11 +43,21 @@ fn main() {
             println!("Steamcmd executable located.");
         }
         false => {
-            let requestData = get(STEAMCMD_DOWNLOADURL).unwrap();
-            let content_br = BufReader::new(requestData);
-            let tarfile = GzDecoder::new(content_br);
-            let mut archive = Archive::new(tarfile);
-            archive.unpack(steamCmd_Root);
+            let mut requestData = get(STEAMCMD_DOWNLOADURL).unwrap();
+            #[cfg(not(target_os = "windows"))]
+            {
+                let content_br = BufReader::new(requestData);
+                let tarfile = GzDecoder::new(content_br);
+                let mut archive = Archive::new(tarfile);
+                archive.unpack(steamCmd_Root);
+            }
+            #[cfg(target_os = "windows")]
+            {
+
+                let mut buf: Vec<u8> = vec![];
+                requestData.copy_to(&mut buf);
+                zip_extract::extract(Cursor::new(buf), &steamCmd_Root, true);
+            }
         }
     }
     tauri::Builder::default()
