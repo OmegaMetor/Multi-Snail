@@ -1,3 +1,7 @@
+---
+import "@fontsource/press-start-2p"
+---
+
 <div class="HeaderBar">
     <div class="OptionButtons">
         <slot name="Options" />
@@ -7,13 +11,6 @@
 <head>
 	<link rel="stylesheet" href="/styles/global.css" />
 	<style is:global>
-		@font-face {
-			font-family: "PressStart2P";
-			src: url("PressStart2P-Regular.ttf");
-			font-weight: normal;
-			font-style: normal;
-			font-display: swap;
-		}
 		body {
 			background: var(--main-bg-gradient);
 			display: flex;
@@ -27,7 +24,7 @@
 		}
 		* {
 			font-size: 1vw;
-			font-family: PressStart2P;
+			font-family: "Press Start 2P";
 		}
     </style>
 </head>
